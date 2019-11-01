@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 
 public class ClientsRepo {
-    private static ArrayList clientList;
+    private static ArrayList<Client> clientList;
 
     private ClientsRepo() {}
 
-    public static ArrayList getInstance() {
+    public static ArrayList<Client> getInstance() {
         if (clientList == null) {
-            clientList = new ArrayList();
+            clientList = new ArrayList<Client>();
         }
         return clientList;
     }

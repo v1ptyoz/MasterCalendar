@@ -2,13 +2,13 @@ import java.util.ArrayList;
 import java.util.TreeMap;
 
 public class RecordsRepo {
-    private static ArrayList allRecords;
+    private static ArrayList<Record> allRecords;
 
     private RecordsRepo() {}
 
-    public static ArrayList getInstance() {
+    public static ArrayList<Record> getInstance() {
         if (allRecords == null) {
-            allRecords = new ArrayList();
+            allRecords = new ArrayList<Record>();
         }
         return allRecords;
     }
