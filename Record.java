@@ -8,8 +8,19 @@ public class Record {
     private Calendar date;
     private Client client;
 
-    public String getDate() {
+
+    public String getReadableDate() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("d MMMM yyyy, EEEE '-' HH:mm");
+        return dateFormat.format(this.date.getTime());
+    }
+
+    public String getDayMonthYear() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("d MMMM yyyy");
+        return dateFormat.format(this.date.getTime());
+    }
+
+    public String getHoursMinutes() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
         return dateFormat.format(this.date.getTime());
     }
 
@@ -23,6 +34,7 @@ public class Record {
         Calendar calendar = new GregorianCalendar(year, month-1 , day);
         calendar.set(Calendar.HOUR, hour);
         calendar.set(Calendar.MINUTE, minute);
+
         this.date = calendar;
     }
 
@@ -34,9 +46,9 @@ public class Record {
         this.client = client;
     }
 
-    public Record(String str, Client client) {
+    public Record(String time, Client client) {
         this.client = client;
-        setDate(str);
+        setDate(time);
     }
 
     public static Record newRecord() throws Exception {
@@ -51,6 +63,11 @@ public class Record {
             }
         }
         throw new Exception("Клиент с заданным id " + id + " не найден");
+    }
+
+    private boolean isAvailable() {
+        // TODO дописать проверку доступного времени
+        return false;
     }
 
 }
